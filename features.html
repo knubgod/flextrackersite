@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flex Tracker — Features</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <meta name="theme-color" content="#0b0f17" />
+  </head>
+
+  <body>
+    <header class="site-header" id="siteHeader">
+      <div class="container nav-row">
+        <a class="brand" href="./index.html" aria-label="Flex Tracker Home">
+          <img class="brand-logo" src="./assets/logo.png" alt="Flex Tracker logo" />
+          <span class="brand-text">Flex Tracker</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">Menu</button>
+
+        <nav class="nav" id="navMenu">
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link" href="./features.html" aria-current="page">Features</a>
+          <a class="nav-link" href="./commands.html">Commands</a>
+          <a class="nav-link" href="./faq.html">FAQ</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./donate.html">Donate</a>
+
+          <a class="btn btn-ghost" href="https://github.com/knubgod/flextrackerbot" target="_blank" rel="noreferrer">GitHub</a>
+
+          <!-- Internal page: should NOT open a new tab -->
+          <a class="btn btn-primary" href="./install.html">Install</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="page-hero">
+        <div class="container">
+          <p class="pill">Features</p>
+          <h1 class="h1">Built to track stacks without being annoying.</h1>
+          <p class="lede">
+            Flex Tracker focuses on clean alerts, predictable behavior, and server-friendly configuration.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid-3">
+            <div class="value-card">
+              <h3>Stack detection</h3>
+              <p>Alerts when 3+ roster players are detected queued together in Ranked Flex.</p>
+            </div>
+            <div class="value-card">
+              <h3>Roster management</h3>
+              <p>Add/remove tracked players and keep your roster up to date with simple commands.</p>
+            </div>
+            <div class="value-card">
+              <h3>Low-noise design</h3>
+              <p>One clean alert per detection moment — not spammy periodic updates.</p>
+            </div>
+            <div class="value-card">
+              <h3>Server configuration</h3>
+              <p>Choose alert channel(s), thresholds, and optional behaviors to match your server.</p>
+            </div>
+            <div class="value-card">
+              <h3>Responsible API usage</h3>
+              <p>Designed to respect rate limits and avoid unnecessary calls.</p>
+            </div>
+            <div class="value-card">
+              <h3>Clear output</h3>
+              <p>Messages are readable and consistent so your alerts channel stays useful.</p>
+            </div>
+          </div>
+
+          <!-- Screenshots -->
+          <div class="card" style="margin-top: 1rem;">
+            <h2 class="h2">Screenshots</h2>
+            <p class="lede">
+              Drop your screenshots into <span class="mono">/assets</span> and update the filenames below.
+            </p>
+
+            <!-- Page-only screenshot styling -->
+            <style>
+              .shot-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                margin-top: 1rem;
+              }
+
+              .shot {
+                margin: 0;
+                border-radius: 18px;
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                background: rgba(0, 0, 0, 0.22);
+                overflow: hidden;
+              }
+
+              .shot img {
+                width: 100%;
+                height: 320px;            /* keeps them consistent */
+                object-fit: cover;        /* crops nicely instead of stretching */
+                display: block;
+              }
+
+              .shot figcaption {
+                padding: 12px 14px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                color: rgba(232, 238, 252, 0.78);
+                font-weight: 800;
+              }
+
+              .shot small {
+                display: block;
+                margin-top: 4px;
+                font-weight: 700;
+                color: rgba(232, 238, 252, 0.62);
+              }
+
+              @media (max-width: 980px) {
+                 .shot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .shot {
+    margin: 0;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+  }
+
+  /* NEW: a frame that lets the whole screenshot show without cropping */
+  .shot-media {
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* NEW: contain instead of cover + no fixed height */
+  .shot img {
+    width: 100%;
+    height: auto;             /* let the image keep its natural height */
+    max-height: 560px;        /* prevents absurdly tall screenshots from taking over */
+    object-fit: contain;      /* show the entire screenshot (NO cropping) */
+    display: block;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .shot figcaption {
+    padding: 12px 14px;
+    color: rgba(232, 238, 252, 0.78);
+    font-weight: 800;
+  }
+
+  .shot small {
+    display: block;
+    margin-top: 4px;
+    font-weight: 700;
+    color: rgba(232, 238, 252, 0.62);
+  }
+
+  @media (max-width: 980px) {
+    .shot-grid { grid-template-columns: 1fr; }
+    .shot img { max-height: 520px; }
+  }
+              }
+            </style>
+
+            <div class="shot-grid">
+  <figure class="shot">
+    <div class="shot-media">
+      <img
+        src="./assets/match_result.png"
+        alt="Post-game message screenshot"
+        onerror="this.style.display='none'; this.closest('.shot').style.display='none';"
+      />
+    </div>
+    <figcaption>
+      Post-game summary
+      <small>Example of the match result message the bot posts after a tracked game.</small>
+    </figcaption>
+  </figure>
+
+  <figure class="shot">
+    <div class="shot-media">
+      <img
+        src="./assets/stack_detected.png"
+        alt="Stack detected alert screenshot"
+        onerror="this.style.display='none'; this.closest('.shot').style.display='none';"
+      />
+    </div>
+    <figcaption>
+      Stack detected alert
+      <small>Alert when 3+ roster players are detected queued together in Ranked Flex.</small>
+    </figcaption>
+  </figure>
+</div>
+          </div>
+
+          <!-- Bottom CTA -->
+          <section class="section section-alt cta-wide" style="margin-top: 1.5rem;">
+            <div class="cta-inner">
+              <h2 class="h2">Want to run it?</h2>
+              <p class="lede">Follow the install guide, then configure your alert channel and threshold.</p>
+              <div class="hero-actions" style="justify-content:center;">
+                <a class="btn btn-primary" href="./install.html">Install instructions</a>
+                <a class="btn btn-ghost" href="./commands.html">View commands</a>
+                <a class="btn btn-ghost" href="https://github.com/knubgod/flextrackerbot" target="_blank" rel="noreferrer">Open GitHub</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div class="footer-min">
+          <a href="#top">Back to top</a>
+        </div>
+
+        <p class="muted" style="margin:0;">
+          © <span id="year"></span> Flex Tracker <span class="muted">•</span>
+          <span class="muted">
+            Flex Tracker is a fan-made project and is not affiliated with, endorsed, sponsored, or approved by Riot Games, Inc.
+            League of Legends is a trademark or registered trademark of Riot Games, Inc.
+          </span>
+        </p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <script src="./script.js"></script>
+  </body>
+</html>

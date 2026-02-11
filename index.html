@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flex Tracker — Ranked Flex Stack Alerts</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <meta name="theme-color" content="#0b0f17" />
+  </head>
+
+  <body>
+    <header class="site-header" id="siteHeader">
+      <div class="container nav-row">
+        <a class="brand" href="./index.html" aria-label="Flex Tracker Home">
+          <img class="brand-logo" src="./assets/logo.png" alt="Flex Tracker logo" />
+          <span class="brand-text">Flex Tracker</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">Menu</button>
+
+        <nav class="nav" id="navMenu">
+          <a class="nav-link" href="./index.html" aria-current="page">Home</a>
+          <a class="nav-link" href="./features.html">Features</a>
+          <a class="nav-link" href="./commands.html">Commands</a>
+          <a class="nav-link" href="./faq.html">FAQ</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./donate.html">Donate</a>
+
+          <!-- Replace links -->
+          <a class="btn btn-ghost" href="https://github.com/knubgod/flextrackerbot" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-primary" href="./install.html" rel="noreferrer">Install</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="pill">Ranked Flex</p>
+
+            <h1 class="h1">
+              Stack alerts, match tracking, and clean server summaries.
+              <span class="muted hero-subtitle">Know when your roster queues together — without the hassle.</span>
+            </h1>
+
+            <p class="lede">
+              Flex Tracker watches a roster of players and posts an alert when a stack is detected.
+              Built for real servers: clear notifications, simple setup, and low noise. This is an open source project built on Discord <i>(dot)</i> js.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-ghost btn-focus" href="./features.html">Explore features</a>
+              <a class="btn btn-primary btn-focus" href="#demo">Watch the demo</a>
+            </div>
+
+            <div class="grid-3">
+              <div class="value-card">
+                <h3>Roster-based</h3>
+                <p>Track the players you care about. Alerts only when your roster stacks up.</p>
+              </div>
+              <div class="value-card">
+                <h3>Low-noise</h3>
+                <p>Smart alerts and clear summaries — not constant bot chatter.</p>
+              </div>
+              <div class="value-card">
+                <h3>Reliable</h3>
+                <p>Designed around responsible API usage and stable operation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <div class="card" style="padding: 18px;">
+              <h2 class="h2" style="margin-bottom: 0.25rem;">At-a-glance</h2>
+              <p class="lede" style="margin: 0.25rem 0 0;">
+                Detect stacks and post alerts fast — then stay out of the way.
+              </p>
+
+              <div style="margin-top: 1rem;">
+                <img
+                  src="./assets/hero-banner.png"
+                  alt="Flex Tracker preview"
+                  style="width:100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.10); background: rgba(0,0,0,0.2);"
+                  onerror="this.style.display='none';"
+                />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Demo -->
+      <section class="section section-alt" id="demo">
+        <div class="container">
+          <p class="pill">Demo</p>
+          <h2 class="h2">See a stack alert in action.</h2>
+          <p class="lede">
+            This mock demo shows “typing…”, a stack alert appearing, and then fading out to keep channels clean.
+          </p>
+
+          <div class="demo-grid">
+            <div class="card" style="padding:0;">
+              <div class="discord-shell">
+                <div class="discord-top">
+                  <span class="hash">#</span>
+                  <span class="chan">flex-alerts</span>
+                  <span class="topic muted">stack notifications</span>
+                </div>
+
+                <div class="discord-feed" id="demoFeed">
+                  <div class="muted" style="font-weight:800; padding:10px 6px;">
+                    Click “Run demo” to play the animation.
+                  </div>
+                </div>
+
+                <div class="discord-actions">
+                  <button class="btn btn-primary btn-small" id="demoRun" type="button">Run demo</button>
+
+                  <label class="muted" style="display:flex; align-items:center; gap:0.5rem; font-weight:900;">
+                    <input id="demoAuto" type="checkbox" />
+                    Auto
+                  </label>
+
+                  <span class="muted" style="margin-left:auto; font-weight:900;">No real data used.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2 class="h2" style="margin-bottom: 0.25rem;">What it posts</h2>
+              <p class="lede" style="margin: 0.5rem 0 0;">
+                A single clean alert when a roster stack is detected.
+              </p>
+
+              <div class="value-card" style="margin-top: 1rem;">
+                <h3>Alert content</h3>
+                <p class="muted" style="margin-top: 0.35rem;">
+                  “Stack detected: 3 roster players queued together in Ranked Flex.”
+                  <br />
+                  Optional: include roster names, match state, and quick links.
+                </p>
+              </div>
+
+              <div class="value-card" style="margin-top: 1rem;">
+                <h3>Best practice</h3>
+                <p class="muted" style="margin-top: 0.35rem;">
+                  Use a dedicated alerts channel. Keep normal chat channels human-first.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div class="footer-min">
+          <a href="#top">Back to top</a>
+        </div>
+
+        <p class="muted" style="margin:0;">
+          © <span id="year"></span> Flex Tracker <span class="muted">•</span>
+          <span class="muted">
+            Flex Tracker is a fan-made project and is not affiliated with, endorsed, sponsored, or approved by Riot Games, Inc.
+            League of Legends is a trademark or registered trademark of Riot Games, Inc.
+          </span>
+        </p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

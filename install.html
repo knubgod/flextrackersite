@@ -1,0 +1,197 @@
+<!-- Flex Tracker — Install (v1) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flex Tracker — Install</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <meta name="theme-color" content="#0b0f17" />
+  </head>
+
+  <body>
+    <header class="site-header" id="siteHeader">
+      <div class="container nav-row">
+        <a class="brand" href="./index.html" aria-label="Flex Tracker Home">
+          <img class="brand-logo" src="./assets/logo.png" alt="Flex Tracker logo" />
+          <span class="brand-text">Flex Tracker</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">Menu</button>
+
+        <nav class="nav" id="navMenu">
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link" href="./features.html">Features</a>
+          <a class="nav-link" href="./commands.html">Commands</a>
+          <a class="nav-link" href="./faq.html">FAQ</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./donate.html">Donate</a>
+
+          <a class="btn btn-ghost" href="https://github.com/knubgod/flextrackerbot" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-primary" href="./install.html">Install</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="page-hero">
+        <div class="container">
+          <p class="pill">Install</p>
+          <h1 class="h1">Self-hosted Flex Tracker.</h1>
+          <p class="lede">
+            Flex Tracker is designed as a self-hosted project. You run it on your own machine or VPS.
+            This page walks you through setup for Linux (pm2) and Windows.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid-2">
+            <div class="card">
+              <h2 class="h2">What you need</h2>
+              <ul style="margin: 0.75rem 0 0; padding-left: 1.2rem;">
+                <li><strong>Node.js (LTS)</strong></li>
+                <li><strong>A Discord bot token</strong> (Discord Developer Portal)</li>
+                <li><strong>A Riot API key</strong> (if your bot uses Riot endpoints)</li>
+                <li><strong>A machine to run it</strong> (Linux server/VPS recommended)</li>
+              </ul>
+
+              <div class="value-card" style="margin-top: 1rem;">
+                <h3>Beginner note</h3>
+                <p>
+                  Self-hosting means: your bot is one program running on one machine. Every Discord server your bot is
+                  in will send events to that same running process.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2 class="h2">Recommended</h2>
+              <p class="lede" style="margin: 0.5rem 0 0;">
+                Use Linux + pm2 so the bot stays online and restarts automatically after crashes/reboots.
+              </p>
+
+              <div class="value-card" style="margin-top: 1rem;">
+                <h3>Where to host</h3>
+                <p>
+                  You can run Flex Tracker on a homelab or VPS. For public or always-on usage, a VPS is the most stable option.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top: 1rem;">
+            <h2 class="h2">Linux setup (pm2)</h2>
+
+            <h3 style="margin-bottom: 0.25rem;">1) Clone the repo</h3>
+            <p class="muted" style="margin-top:0;">Run in a folder where you want the bot to live.</p>
+            <pre class="value-card" style="overflow:auto;"><code class="mono">git clone https://github.com/knubgod/flextrackerbot.git
+cd flextrackerbot</code></pre>
+
+            <h3 style="margin: 1.1rem 0 0.25rem;">2) Install dependencies</h3>
+            <pre class="value-card" style="overflow:auto;"><code class="mono">npm install</code></pre>
+
+            <h3 style="margin: 1.1rem 0 0.25rem;">3) Create your environment file</h3>
+            <p class="muted" style="margin-top:0;">
+              Create a <span class="mono">.env</span> file in the project root. Put your tokens/keys there.
+            </p>
+            <pre class="value-card" style="overflow:auto;"><code class="mono"># Example .env (names may differ in your project)
+DISCORD_TOKEN=your_discord_bot_token
+RIOT_API_KEY=your_riot_api_key</code></pre>
+
+            <h3 style="margin: 1.1rem 0 0.25rem;">4) Run it once to verify</h3>
+            <pre class="value-card" style="overflow:auto;"><code class="mono">node .</code></pre>
+            <p class="muted" style="margin-top:0;">
+              If it logs in successfully, stop it with <span class="mono">CTRL + C</span>.
+            </p>
+
+            <h3 style="margin: 1.1rem 0 0.25rem;">5) Install pm2 (global) + start</h3>
+            <pre class="value-card" style="overflow:auto;"><code class="mono">npm install -g pm2
+pm2 start . --name flex-tracker
+pm2 logs flex-tracker</code></pre>
+
+            <h3 style="margin: 1.1rem 0 0.25rem;">6) Enable auto-start on reboot</h3>
+            <pre class="value-card" style="overflow:auto;"><code class="mono">pm2 save
+pm2 startup</code></pre>
+            <p class="muted" style="margin-top:0;">
+              The last command prints one more command — copy/paste that one too (it sets up your system service).
+            </p>
+          </div>
+
+          <div class="card" style="margin-top: 1rem;">
+            <h2 class="h2">Windows setup (two options)</h2>
+
+            <div class="grid-2" style="margin-top: 0.75rem;">
+              <div class="value-card">
+                <h3>Option A: pm2 on Windows (similar workflow)</h3>
+                <p style="margin-top:0.5rem;">
+                  Works fine on Windows, and keeps your workflow consistent with Linux.
+                </p>
+                <pre class="value-card" style="overflow:auto;"><code class="mono"># In PowerShell / Terminal
+git clone https://github.com/knubgod/flextrackerbot.git
+cd flextrackerbot
+npm install
+
+# create .env in the folder (same as Linux)
+npm install -g pm2
+pm2 start . --name flex-tracker
+pm2 logs flex-tracker</code></pre>
+                <p class="muted" style="margin-top:0;">
+                  Note: Windows auto-start with pm2 is less “native” than Linux. If you want reliable auto-start, use Option B.
+                </p>
+              </div>
+
+              <div class="value-card">
+                <h3>Option B: Windows Task Scheduler (native auto-start)</h3>
+                <p style="margin-top:0.5rem;">
+                  This runs your bot at login or at startup automatically.
+                </p>
+                <ol style="margin: 0.75rem 0 0; padding-left: 1.2rem;">
+                  <li>Open <strong>Task Scheduler</strong></li>
+                  <li>Click <strong>Create Task</strong></li>
+                  <li><strong>Triggers</strong> → “At startup” (or “At log on”)</li>
+                  <li><strong>Actions</strong> → “Start a program”</li>
+                  <li>Program/script: <span class="mono">node</span></li>
+                  <li>Start in: your project folder path</li>
+                  <li>Arguments: the entry file or <span class="mono">.</span> depending on your project</li>
+                </ol>
+                <p class="muted" style="margin-top:0.75rem;">
+                  This is the most Windows-reliable way to keep the bot always running.
+                </p>
+              </div>
+            </div>
+
+            <div class="value-card" style="margin-top: 1rem;">
+              <h3>Windows note</h3>
+              <p>
+                If you close the terminal and you aren’t using pm2 or Task Scheduler, the bot will stop.
+                “Always-on” needs a process manager or scheduled task.
+              </p>
+            </div>
+          </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div class="footer-min">
+          <a href="#top">Back to top</a>
+        </div>
+
+        <p class="muted" style="margin:0;">
+          © <span id="year"></span> Flex Tracker <span class="muted">•</span>
+          <span class="muted">
+            Flex Tracker is a fan-made project and is not affiliated with, endorsed, sponsored, or approved by Riot Games, Inc.
+            League of Legends is a trademark or registered trademark of Riot Games, Inc.
+          </span>
+        </p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!-- Flex Tracker — FAQ (v1) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flex Tracker — FAQ</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <meta name="theme-color" content="#0b0f17" />
+  </head>
+
+  <body>
+    <header class="site-header" id="siteHeader">
+      <div class="container nav-row">
+        <a class="brand" href="./index.html" aria-label="Flex Tracker Home">
+          <img class="brand-logo" src="./assets/logo.png" alt="Flex Tracker logo" />
+          <span class="brand-text">Flex Tracker</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">Menu</button>
+
+        <nav class="nav" id="navMenu">
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link" href="./features.html">Features</a>
+          <a class="nav-link" href="./commands.html">Commands</a>
+          <a class="nav-link" href="./faq.html" aria-current="page">FAQ</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./donate.html">Donate</a>
+
+          <a class="btn btn-ghost" href="https://github.com/knubgod/flextrackerbot" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-primary" href="./install.html">Install</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="page-hero">
+        <div class="container">
+          <p class="pill">FAQ</p>
+          <h1 class="h1">Common questions.</h1>
+          <p class="lede">Quick answers about self-hosting, configuration, and behavior.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="card">
+            <details class="value-card">
+              <summary style="cursor:pointer; font-weight:900;">Do I need to host this myself?</summary>
+              <p class="muted" style="margin-top:0.75rem;">
+                Yes. Flex Tracker is a self-hosted project. You run it on your own machine or a VPS so it can stay online.
+              </p>
+            </details>
+
+            <details class="value-card" style="margin-top:0.75rem;">
+              <summary style="cursor:pointer; font-weight:900;">Will it work in multiple servers at once?</summary>
+              <p class="muted" style="margin-top:0.75rem;">
+                Yes. One running bot instance can be in multiple Discord servers. Each server can configure its own alert channel, threshold, and polling.
+              </p>
+            </details>
+
+            <details class="value-card" style="margin-top:0.75rem;">
+              <summary style="cursor:pointer; font-weight:900;">What’s the best way to reduce spam?</summary>
+              <p class="muted" style="margin-top:0.75rem;">
+                Use one dedicated alert channel. Keep the roster tight and avoid polling too frequently.
+              </p>
+            </details>
+
+            <details class="value-card" style="margin-top:0.75rem;">
+              <summary style="cursor:pointer; font-weight:900;">Why do some commands reply privately?</summary>
+              <p class="muted" style="margin-top:0.75rem;">
+                Some slash commands respond ephemerally (private reply) so your server channels don’t become command logs.
+              </p>
+            </details>
+
+            <details class="value-card" style="margin-top:0.75rem;">
+              <summary style="cursor:pointer; font-weight:900;">Is this affiliated with Riot?</summary>
+              <p class="muted" style="margin-top:0.75rem;">
+                No. Flex Tracker is fan-made and not endorsed by Riot Games.
+              </p>
+            </details>
+          </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div class="footer-min">
+          <a href="#top">Back to top</a>
+        </div>
+
+        <p class="muted" style="margin:0;">
+          © <span id="year"></span> Flex Tracker <span class="muted">•</span>
+          <span class="muted">
+            Flex Tracker is a fan-made project and is not affiliated with, endorsed, sponsored, or approved by Riot Games, Inc.
+            League of Legends is a trademark or registered trademark of Riot Games, Inc.
+          </span>
+        </p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <script src="./script.js"></script>
+  </body>
+</html>

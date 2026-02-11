@@ -1,0 +1,121 @@
+<!-- Flex Tracker — About (v1) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flex Tracker — About</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <meta name="theme-color" content="#0b0f17" />
+  </head>
+
+  <body>
+    <header class="site-header" id="siteHeader">
+      <div class="container nav-row">
+        <a class="brand" href="./index.html" aria-label="Flex Tracker Home">
+          <img class="brand-logo" src="./assets/logo.png" alt="Flex Tracker logo" />
+          <span class="brand-text">Flex Tracker</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">Menu</button>
+
+        <nav class="nav" id="navMenu">
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link" href="./features.html">Features</a>
+          <a class="nav-link" href="./commands.html">Commands</a>
+          <a class="nav-link" href="./faq.html">FAQ</a>
+          <a class="nav-link" href="./about.html" aria-current="page">About</a>
+          <a class="nav-link" href="./donate.html">Donate</a>
+
+          <a class="btn btn-ghost" href="https://github.com/knubgod/flextrackerbot" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-primary" href="./install.html">Install</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="page-hero">
+        <div class="container">
+          <p class="pill">About</p>
+          <h1 class="h1">A practical bot for flex servers.</h1>
+          <p class="lede">
+            Built to answer one question quickly: “Are we stacked right now?”
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid-2">
+            <div>
+              <h2 class="h2">What Flex Tracker does</h2>
+              <p>
+                Flex Tracker monitors a roster of League of Legends accounts and posts an alert when a threshold of
+                roster players are detected queued together in Ranked Flex.
+              </p>
+              <p>
+                It’s designed to be low-noise: one clean alert at the right moment, plus optional status/help commands
+                for server admins.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="h2">Why it’s self-hosted</h2>
+              <p>
+                This project stays self-hosted so you control uptime, configuration, and API usage.
+                You can run it on a homelab for private servers, or on a VPS for consistent uptime.
+              </p>
+              <p>
+                The install guide includes Linux (pm2) and Windows options.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2 class="h2">Project values</h2>
+          <p class="lede">Predictable alerts, clean channels, responsible API behavior.</p>
+
+          <div class="grid-3" style="margin-top: 1rem;">
+            <div class="value-card">
+              <h3>Clean output</h3>
+              <p>Alerts are readable and posted in one place — not sprayed across the server.</p>
+            </div>
+            <div class="value-card">
+              <h3>Configurable</h3>
+              <p>Adjust channel, threshold, and polling so it matches your community.</p>
+            </div>
+            <div class="value-card">
+              <h3>Self-owned uptime</h3>
+              <p>You run it. Your bot stays online as long as your host stays online.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div class="footer-min">
+          <a href="#top">Back to top</a>
+        </div>
+
+        <p class="muted" style="margin:0;">
+          © <span id="year"></span> Flex Tracker <span class="muted">•</span>
+          <span class="muted">
+            Flex Tracker is a fan-made project and is not affiliated with, endorsed, sponsored, or approved by Riot Games, Inc.
+            League of Legends is a trademark or registered trademark of Riot Games, Inc.
+          </span>
+        </p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <script src="./script.js"></script>
+  </body>
+</html>
