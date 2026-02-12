@@ -131,3 +131,23 @@ function setAuto(on) {
 
 if (demoBtn) demoBtn.addEventListener("click", runDemoOnce);
 if (demoAuto) demoAuto.addEventListener("change", (e) => setAuto(e.target.checked));
+
+// Release bar (v1.2.2)
+(function(){
+  const bar = document.getElementById("releaseBar");
+  const dismiss = document.getElementById("releaseDismiss");
+  if (!bar || !dismiss) return;
+
+  const KEY = "flextracker_release_122_hidden";
+
+  if (localStorage.getItem(KEY) === "1") return;
+
+  setTimeout(() => {
+    bar.classList.add("is-visible");
+  }, 300);
+
+  dismiss.addEventListener("click", () => {
+    bar.classList.remove("is-visible");
+    localStorage.setItem(KEY, "1");
+  });
+})();
