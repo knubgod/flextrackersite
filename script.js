@@ -132,22 +132,45 @@ function setAuto(on) {
 if (demoBtn) demoBtn.addEventListener("click", runDemoOnce);
 if (demoAuto) demoAuto.addEventListener("change", (e) => setAuto(e.target.checked));
 
-// Release bar (v1.2.2)
+// Homepage release bar (v1.2.2)
 (function(){
   const bar = document.getElementById("releaseBar");
   const dismiss = document.getElementById("releaseDismiss");
-  if (!bar || !dismiss) return;
+  if (!bar) return;
 
-  const KEY = "flextracker_release_122_hidden";
-
-  if (localStorage.getItem(KEY) === "1") return;
-
+  // Slide in
   setTimeout(() => {
     bar.classList.add("is-visible");
+    bar.classList.add("pulse");
   }, 300);
 
-  dismiss.addEventListener("click", () => {
+  // Stop pulsing after 5 seconds
+  setTimeout(() => {
+    bar.classList.remove("pulse");
+  }, 5000);
+
+  function closeBar(){
+    // start collapse animation
+    bar.classList.remove("pulse");
+    bar.classList.add("is-closing");
     bar.classList.remove("is-visible");
-    localStorage.setItem(KEY, "1");
-  });
+
+    // after animation, fully remove from layout
+    setTimeout(() => {
+      bar.style.display = "none";
+    }, 280);
+  }
+
+  // Auto-hide after 15 seconds
+  const autoHide = setTimeout(() => {
+    closeBar();
+  }, 15000);
+
+  // Manual dismiss
+  if (dismiss){
+    dismiss.addEventListener("click", () => {
+      clearTimeout(autoHide);
+      closeBar();
+    });
+  }
 })();

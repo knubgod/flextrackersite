@@ -397,26 +397,49 @@ main { min-height: calc(100vh - 80px); padding-bottom: 36px; }
 
 /* ===== Release Announcement Bar ===== */
 
+/* Release bar: collapsible + animated close */
 .release-bar{
   width: 100%;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(88,101,242,0.18),
-      rgba(79,176,255,0.18)
-    );
+  background: linear-gradient(
+    90deg,
+    rgba(88,101,242,0.18),
+    rgba(79,176,255,0.18)
+  );
   border-bottom: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(8px);
-
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 260ms ease, opacity 260ms ease;
   z-index: 15;
+
+  /* Collapsing animation */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition: max-height 260ms ease, opacity 260ms ease;
 }
 
+/* When visible, give it enough height to fit content */
 .release-bar.is-visible{
-  transform: translateY(0);
+  max-height: 120px; /* generous; handles wrapping on mobile */
   opacity: 1;
+}
+
+/* Closing state: fade and collapse */
+.release-bar.is-closing{
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Keep your inner layout the same */
+.release-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .release-inner{
@@ -434,6 +457,17 @@ main { min-height: calc(100vh - 80px); padding-bottom: 36px; }
 .release-text{
   font-weight: 800;
   color: rgba(232,238,252,0.95);
+}
+
+/* Glow pulse animation */
+@keyframes releasePulse {
+  0%   { box-shadow: 0 0 0 rgba(88,101,242,0); }
+  50%  { box-shadow: 0 0 18px rgba(88,101,242,0.45); }
+  100% { box-shadow: 0 0 0 rgba(88,101,242,0); }
+}
+
+.release-bar.pulse{
+  animation: releasePulse 1.6s ease-in-out infinite;
 }
 
 .release-btn{
