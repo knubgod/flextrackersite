@@ -1,4 +1,4 @@
-<!-- Flex Tracker — Commands (v2, updated list) -->
+<!-- Flex Tracker — Commands (v3, updated categories + hover highlight) -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,12 +31,7 @@
 
           <a class="btn btn-ghost" href="https://github.com/knubgod/flextrackerbot" target="_blank" rel="noreferrer">GitHub</a>
 
-          <a
-            class="btn btn-support"
-            href="https://discord.gg/EASFS7yz"
-            target="_blank"
-            rel="noreferrer"
-          >Contact Dev</a>
+          <a class="btn btn-support" href="https://discord.gg/EASFS7yz" target="_blank" rel="noreferrer">Contact Dev</a>
 
           <a class="btn btn-primary" href="./install.html">Install</a>
         </nav>
@@ -59,16 +54,52 @@
           <style>
             .cmd-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:start; }
             .cmd-list { display:grid; gap:0.75rem; margin-top:0.75rem; }
-            .cmd {
+
+            .cmd{
               border-radius:16px;
               padding:14px 16px;
               border:1px solid rgba(255,255,255,0.08);
               background: rgba(0,0,0,0.22);
               text-align:left;
+              transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+              position: relative;
+              overflow: hidden;
             }
+
+            /* Subtle brand highlight + tiny lift on hover (matches site feel) */
+            .cmd:hover{
+              transform: translateY(-2px);
+              border-color: rgba(255,255,255,0.14);
+              background: rgba(255,255,255,0.045);
+              box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+            }
+
+            /* Gradient sheen accent (very subtle) */
+            .cmd::after{
+              content:"";
+              position:absolute;
+              inset:-1px;
+              border-radius:16px;
+              pointer-events:none;
+              opacity:0;
+              transition: opacity 180ms ease;
+              background: radial-gradient(
+                  900px 220px at 10% 0%,
+                  rgba(88, 101, 242, 0.12),
+                  transparent 55%
+                ),
+                radial-gradient(
+                  900px 220px at 90% 0%,
+                  rgba(79, 176, 255, 0.12),
+                  transparent 55%
+                );
+            }
+            .cmd:hover::after{ opacity: 1; }
+
             .cmd-top { display:flex; align-items:baseline; justify-content:space-between; gap:0.75rem; flex-wrap:nowrap; }
             .cmd-name { margin:0; font-weight:900; max-width:none; }
-            .cmd-chip {
+
+            .cmd-chip{
               display:inline-flex; align-items:center;
               padding:0.2rem 0.55rem; border-radius:999px;
               font-weight:900; font-size:0.78rem;
@@ -77,6 +108,7 @@
               color: rgba(232,238,252,0.88);
               white-space:nowrap; flex:0 0 auto;
             }
+
             .cmd-row { margin-top: 8px; }
             .cmd-code{
               display:inline-block;
@@ -89,6 +121,7 @@
               color: rgba(232,238,252,0.92);
               vertical-align: baseline;
             }
+
             .cmd-desc{
               display:inline;
               margin:0;
@@ -98,6 +131,7 @@
               vertical-align: baseline;
             }
             .cmd-desc::before{ content:"— "; opacity:0.65; }
+
             .cmd-note{
               margin-top:10px;
               padding:10px 12px;
@@ -106,15 +140,24 @@
               background: rgba(79,176,255,0.06);
               text-align:left;
             }
+
             @media (max-width: 980px){ .cmd-grid{ grid-template-columns:1fr; } }
             @media (max-width: 520px){
               .cmd-top{ flex-wrap:wrap; }
               .cmd-desc{ display:block; margin-left:0; margin-top:8px; }
               .cmd-desc::before{ content:""; }
             }
+
+            /* Reduced motion */
+            @media (prefers-reduced-motion: reduce){
+              .cmd{ transition:none; }
+              .cmd::after{ transition:none; }
+              .cmd:hover{ transform:none; }
+            }
           </style>
 
           <div class="cmd-grid">
+            <!-- Roster -->
             <div class="card">
               <h2 class="h2" style="margin-bottom:0;">Roster</h2>
               <p class="lede" style="margin:0.5rem 0 0;">Manage the players Flex Tracker watches.</p>
@@ -155,9 +198,10 @@
               </div>
             </div>
 
+            <!-- Record (includes stats) -->
             <div class="card">
               <h2 class="h2" style="margin-bottom:0;">Record</h2>
-              <p class="lede" style="margin:0.5rem 0 0;">Track a simple W/L record.</p>
+              <p class="lede" style="margin:0.5rem 0 0;">Track a simple W/L record and view performance stats.</p>
 
               <div class="cmd-list">
                 <div class="cmd">
@@ -168,6 +212,42 @@
                   <div class="cmd-row">
                     <span class="cmd-code">/record</span>
                     <p class="cmd-desc">Displays current wins/losses.</p>
+                  </div>
+                </div>
+
+                <!-- Added: /stats -->
+                <div class="cmd">
+                  <div class="cmd-top">
+                    <p class="cmd-name">Stats overview</p>
+                    <span class="cmd-chip">Record</span>
+                  </div>
+                  <div class="cmd-row">
+                    <span class="cmd-code">/stats</span>
+                    <p class="cmd-desc">Shows a quick stats snapshot from tracked games.</p>
+                  </div>
+                </div>
+
+                <!-- Added: /statsfive -->
+                <div class="cmd">
+                  <div class="cmd-top">
+                    <p class="cmd-name">Recent performance</p>
+                    <span class="cmd-chip">Record</span>
+                  </div>
+                  <div class="cmd-row">
+                    <span class="cmd-code">/statsfive</span>
+                    <p class="cmd-desc">Shows stats from the last five tracked games.</p>
+                  </div>
+                </div>
+
+                <!-- Added: /statsdetailed -->
+                <div class="cmd">
+                  <div class="cmd-top">
+                    <p class="cmd-name">Detailed statistics</p>
+                    <span class="cmd-chip">Record</span>
+                  </div>
+                  <div class="cmd-row">
+                    <span class="cmd-code">/statsdetailed</span>
+                    <p class="cmd-desc">Displays expanded stats and tracked history.</p>
                   </div>
                 </div>
 
@@ -195,9 +275,10 @@
               </div>
             </div>
 
+            <!-- Checks (now includes /status) -->
             <div class="card">
               <h2 class="h2" style="margin-bottom:0;">Checks</h2>
-              <p class="lede" style="margin:0.5rem 0 0;">Manually trigger detection.</p>
+              <p class="lede" style="margin:0.5rem 0 0;">Manually trigger detection and view runtime status.</p>
 
               <div class="cmd-list">
                 <div class="cmd">
@@ -210,6 +291,17 @@
                     <p class="cmd-desc">Runs detection immediately (useful for testing).</p>
                   </div>
                 </div>
+
+                <div class="cmd">
+                  <div class="cmd-top">
+                    <p class="cmd-name">Status</p>
+                    <span class="cmd-chip">Checks</span>
+                  </div>
+                  <div class="cmd-row">
+                    <span class="cmd-code">/status</span>
+                    <p class="cmd-desc">Shows health + current runtime info.</p>
+                  </div>
+                </div>
               </div>
 
               <div class="cmd-note">
@@ -217,9 +309,10 @@
               </div>
             </div>
 
+            <!-- Config + Info (help only now) -->
             <div class="card">
               <h2 class="h2" style="margin-bottom:0;">Config + Info</h2>
-              <p class="lede" style="margin:0.5rem 0 0;">Configure alerts and view status.</p>
+              <p class="lede" style="margin:0.5rem 0 0;">Configure alerts and view basic help.</p>
 
               <div class="cmd-list">
                 <div class="cmd">
@@ -263,40 +356,6 @@
                   <div class="cmd-row">
                     <span class="cmd-code">/config set-poll-seconds &lt;seconds&gt;</span>
                     <p class="cmd-desc">How often the bot checks for stacks.</p>
-                  </div>
-                </div>
-
-                <!-- NEW: Stats commands -->
-                <div class="cmd">
-                  <div class="cmd-top">
-                    <p class="cmd-name">Recent performance</p>
-                    <span class="cmd-chip">Info</span>
-                  </div>
-                  <div class="cmd-row">
-                    <span class="cmd-code">/statsfive</span>
-                    <p class="cmd-desc">Shows stats from the last five tracked games.</p>
-                  </div>
-                </div>
-
-                <div class="cmd">
-                  <div class="cmd-top">
-                    <p class="cmd-name">Detailed statistics</p>
-                    <span class="cmd-chip">Info</span>
-                  </div>
-                  <div class="cmd-row">
-                    <span class="cmd-code">/statsdetailed</span>
-                    <p class="cmd-desc">Displays expanded stats and tracked history.</p>
-                  </div>
-                </div>
-
-                <div class="cmd">
-                  <div class="cmd-top">
-                    <p class="cmd-name">Status</p>
-                    <span class="cmd-chip">Info</span>
-                  </div>
-                  <div class="cmd-row">
-                    <span class="cmd-code">/status</span>
-                    <p class="cmd-desc">Shows health + current runtime info.</p>
                   </div>
                 </div>
 
